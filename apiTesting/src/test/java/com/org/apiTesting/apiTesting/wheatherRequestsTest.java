@@ -1,21 +1,24 @@
 package com.org.apiTesting.apiTesting;
 
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
 
-import org.testng.annotations.Test;
-
-import com.jayway.restassured.response.Response;
-//import com.jayway.restassured.response.ResponseBody;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import static com.jayway.restassured.RestAssured.*;
 
 public class wheatherRequestsTest extends Base {
-	// simple get request for getting wheather request
+	Logger log = Logger.getLogger("wheatherRequestsTest");
+
+	// simple get request with param for getting wheather request
 	@Test
 	public void Test_01() {
+		PropertyConfigurator.configure("log4j.properties");
 		given().param("q", "London").param("appid", "b6907d289e10d714a6e88b30761fae22")
 				.get("http://samples.openweathermap.org/data/2.5/weather").then().assertThat().statusCode(200);
-		System.out.println("Status code succfully validatied for this test..");
+		log.info("Status code succfully validatied for this test..");
+		
+		// link to check different status codes:
+		// https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 	}
 }
