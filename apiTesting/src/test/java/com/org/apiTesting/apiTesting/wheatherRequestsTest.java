@@ -16,6 +16,6 @@ public class wheatherRequestsTest extends Base {
 	public void Test_01() {
 		given().param("q", "London").param("appid", "b6907d289e10d714a6e88b30761fae22")
 				.get("http://samples.openweathermap.org/data/2.5/weather").then().assertThat().statusCode(200);
-		System.out.println("Status code succfully validatied.");
+		System.out.println("Status code succfully validatied for this test..");
 	}
 }
